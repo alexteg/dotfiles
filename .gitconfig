@@ -1,0 +1,102 @@
+[user]
+	name = Alexander Teglund
+[core]
+	# editor = vim
+	editor = vscode --wait
+	excludesfile = ~/.gitignore_global
+	hooksPath = ~/git/hooks
+[rebase]
+	autosquash = true
+[colors]
+	ui = true
+[color "diff"]
+	whitespace = red reverse
+[color]
+	ui = auto
+	diff = auto
+[commit]
+	verbose = true
+	no-verify = true
+[pull]
+	ff = only
+[push]
+	followTags = true
+	default = current
+[diff]
+	renames = true
+[tag]
+	sort = version:refname
+[status]
+	short = true
+	branch = true
+[commit]
+	# gpgsign = true
+[gpg]
+	# program = gpg
+[alias]
+	a = add
+	al = add .
+	b = branch
+	bd = branch -D
+	bo = "!git branch -r --list 'origin/*' | sed -E 's/origin\\/(.+)/\\1/g' | sed -E 's/(\\w*)(\\/.*)+/\\1/g' | sort | uniq -c | sort -r"
+	br = rev-parse --abbrev-ref HEAD
+	bs = bisect
+	bsg = bisect good
+	bsb = bisect bad
+	cb = checkout -b
+	cf = commit --fixup
+	can = commit -a --amend --no-edit
+	cam = commit --amend --no-edit
+	cm = commit --verbose
+	cmm = commit -m
+	cl = clone
+	co = checkout
+	cp = cherry-pick
+	conf = config
+	commit-count = rev-list HEAD --count
+	commit-count-all = rev-list --all --count
+	d = diff
+	diffdiff = !sh -c 'interdiff <(git show -p $1) <(git show -p $2) | less -FRS' -
+	dc = diff --cached
+	del = checkout -- .
+	f = fetch
+	fr = "!git fetch; git reset --hard origin/$(git br)"
+	hash = rev-parse --short HEAD
+	l = log
+	la = log --all
+	lf = log --format=fuller
+	lo = log --oneline
+	lgo = log --oneline --graph
+	lr = log --format=raw
+	ls = log --show-signature
+	m = merge --no-ff
+	mb = merge-base
+	master = checkout master
+	p = "!git push -u origin $(git br)"
+	pf = "!git push -u origin $(git br) -f"
+	pl = pull
+	plr = pull --rebase
+	rb = rebase
+	rbc = "!git --no-pager diff --check --cached && git rebase --continue"
+	rba = rebase --abort
+	rbi = rebase -i
+	rbian = rebase -i --no-autosquash
+	rbim = rebase -i master
+	rbmf = rebase -f master
+	rbimn = rebase -i --no-autosquash master
+	rbm = rebase master
+	rb = rebase
+	recm = commit --reuse-message=HEAD@{1}
+	rl = rev-list
+	rs = reset --soft
+	rh = reset --hard
+	s = show
+	sign = rebase --preserve-merges --keep-empty HEAD^ -f
+	ss = stash save
+	st = status -s
+	stv = status
+	stat = diff master... --stat
+	t = tag
+	wip = commit -m "WIP"
+	prev = "!f() { git checkout --ours $@ && git add $@; }; f"
+	next = "!f() { git checkout --theirs $@ && git add $@; }; f"
