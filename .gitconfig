@@ -73,7 +73,7 @@
 	mb = merge-base
 	master = checkout master
 	p = "!git push -u origin $(git br)"
-	pf = "!git push -u origin $(git br) -f"
+	pf = "!git push -u origin $(git br) --force-with-lease"
 	pl = pull
 	plr = pull --rebase
 	rb = rebase
